@@ -3,9 +3,12 @@ package com.example.dacs3
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -16,7 +19,11 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.dacs3.data.UI.HotelItem
+import com.example.dacs3.data.model.HotelDto
+import com.example.dacs3.data.viewModel.HotelViewModel
 import com.example.dacs3.ui.theme.DACS3Theme
+import com.google.firebase.components.Lazy
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +36,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     MainNavigation()
+
                 }
             }
         }
@@ -89,6 +97,16 @@ fun LoginScreen(navController: NavController){
     }
 }
 
+@Composable
+fun HotelList(hotelList: List<HotelDto>){
+    LazyColumn {
+        itemsIndexed(items = hotelList){
+            index, item ->
+            HotelItem(hotel = item)
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -108,5 +126,15 @@ fun PreviewSignupScreen() {
 fun PreviewLoginScreen() {
     LoginScreen(rememberNavController())
 }
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewHotel(hotelViewModel: HotelViewModel = HotelViewModel()) {
+    DACS3Theme {
+        HotelList(hotelList = hotelViewModel.hotelListRes)
+        hotelViewModel.getHotelList()
+    }
+}
+
 
 
