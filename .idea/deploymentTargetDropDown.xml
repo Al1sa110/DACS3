@@ -10,16 +10,29 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\HY\.android\avd\Pixel_6_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-05T15:38:51.103917800Z" />
+        </State>
+      </entry>
+      <entry key="PreviewHotel">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
                   <value value="C:\Users\HY\.android\avd\Pixel_6_Pro_API_34.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-22T15:58:45.188122500Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-05-05T15:36:00.874001400Z" />
         </State>
-      </entry>
-      <entry key="PreviewHotel">
-        <State />
       </entry>
       <entry key="PreviewLoginScreen">
         <State />

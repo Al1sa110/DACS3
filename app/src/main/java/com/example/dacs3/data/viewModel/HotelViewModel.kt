@@ -17,7 +17,18 @@ class HotelViewModel: ViewModel() {
         viewModelScope.launch {
             val hotelApi = HotelApi.getInstance()
             try {
-                val hotelList = hotelApi.getHotel( "new")
+                val hotelList = hotelApi.getHotel(
+                    "restaurant",
+                    20,
+                    "us",
+                    "en",
+                    51.5072,
+                    0.12,
+                    0,
+                    13,
+                    "618a7c10afmsh2148f9275dee7b2p116f00jsnf00742f22c78",
+                    "maps-data.p.rapidapi.com"
+                    )
                 hotelListRes = hotelList
             }
             catch (e:Exception){

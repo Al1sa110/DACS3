@@ -36,14 +36,9 @@ fun HotelItem(hotel: HotelDto){
                         .fillMaxHeight()
                         .weight(0.8f)
                 ) {
-                    Text(text = hotel.hierarchy, color = Color.Red, fontWeight = FontWeight.Bold)
-                    Text(text = hotel.location, color = Color.Red)
-                    Text(text = hotel.score, color = Color.Red)
-                    Text(text = hotel.entityName, color = Color.Red)
-                    Text(text = hotel.entityId, color = Color.Red)
-                    Text(text = hotel.entityType, color = Color.Red)
-                    Text(text = hotel.suggestItem, color = Color.Red)
-                    Text(text = hotel.pois, color = Color.Red)
+                    Text(text = hotel.business_id, color = Color.Red, fontWeight = FontWeight.Bold)
+                    Text(text = hotel.phone_number, color = Color.Red)
+                    Text(text = hotel.name, color = Color.Red)
                 }
             }
         }

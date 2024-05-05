@@ -8,9 +8,18 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface HotelApi {
-    @GET("searchDestinationOrHotel")
+    @GET("searchmaps.php")
     suspend fun getHotel(
         @Query("query") query: String,
+        @Query("limit") limit: Int,
+        @Query("country") country: String,
+        @Query("lang") lang: String,
+        @Query("lat") lat: Double,
+        @Query("lng") lng: Double,
+        @Query("offset") offset: Int,
+        @Query("zoom") zoom: Int,
+        @Header("X-RapidAPI-Key") apiKey: String,
+        @Header("X-RapidAPI-Host") apiHost: String
     ): List<HotelDto>
 
     companion object{
@@ -18,7 +27,7 @@ interface HotelApi {
         fun getInstance(): HotelApi {
             if (hotelApi == null){
                 hotelApi = Retrofit.Builder()
-                    .baseUrl("https://sky-scrapper.p.rapidapi.com/api/v1/hotels/")
+                    .baseUrl("https://maps-data.p.rapidapi.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build().create(HotelApi::class.java)
             }
