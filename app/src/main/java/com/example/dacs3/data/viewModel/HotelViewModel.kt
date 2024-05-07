@@ -6,33 +6,29 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dacs3.data.Api.HotelApi
-import com.example.dacs3.data.model.HotelDto
+import com.example.dacs3.data.model.Data
 import kotlinx.coroutines.launch
 
-class HotelViewModel: ViewModel() {
-    var hotelListRes: List<HotelDto> by mutableStateOf(listOf())
-    var errorMessage: String by mutableStateOf("")
+class HotelViewModel : ViewModel() {
+    var hotelListRes by mutableStateOf<List<Data>>(emptyList())
+    var errorMessage by mutableStateOf("")
 
-    fun getHotelList(){
+    fun getHotelList() {
         viewModelScope.launch {
             val hotelApi = HotelApi.getInstance()
             try {
-                val hotelList = hotelApi.getHotel(
-                    "restaurant",
-                    20,
+                val hotelDtoList = hotelApi.getHotel("hotel",
+                    "20",
                     "us",
                     "en",
-                    51.5072,
-                    0.12,
-                    0,
-                    13,
-                    "618a7c10afmsh2148f9275dee7b2p116f00jsnf00742f22c78",
-                    "maps-data.p.rapidapi.com"
-                    )
-                hotelListRes = hotelList
-            }
-            catch (e:Exception){
-                errorMessage = e.message.toString()
+                    "51.5072",
+                    "0.12",
+                    "0",
+                    "13"
+                )
+                hotelListRes = hotelDtoList.data
+            } catch (e: Exception) {
+                errorMessage = e.message ?: "Unknown error occurred"
             }
         }
     }

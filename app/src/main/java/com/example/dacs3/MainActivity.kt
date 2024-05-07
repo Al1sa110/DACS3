@@ -3,7 +3,6 @@ package com.example.dacs3
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,10 +19,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.dacs3.data.UI.HotelItem
+import com.example.dacs3.data.model.Data
 import com.example.dacs3.data.model.HotelDto
 import com.example.dacs3.data.viewModel.HotelViewModel
 import com.example.dacs3.ui.theme.DACS3Theme
-import com.google.firebase.components.Lazy
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,11 +97,10 @@ fun LoginScreen(navController: NavController){
 }
 
 @Composable
-fun HotelList(hotelList: List<HotelDto>){
+fun HotelList(hotelList: List<Data>){
     LazyColumn {
-        itemsIndexed(items = hotelList){
-            index, item ->
-            HotelItem(hotel = item)
+        itemsIndexed(items = hotelList){ index, item ->
+            HotelItem(hotel = HotelDto(listOf(item)))
         }
     }
 }
@@ -130,11 +128,15 @@ fun PreviewLoginScreen() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewHotel(hotelViewModel: HotelViewModel = HotelViewModel()) {
-    DACS3Theme {
-        HotelList(hotelList = hotelViewModel.hotelListRes)
+    if (hotelViewModel.hotelListRes.isEmpty()) {
         hotelViewModel.getHotelList()
     }
+    hotelViewModel.hotelListRes.let { hotelList ->
+        HotelList(hotelList = hotelList)
+    }
 }
+
+
 
 
 
