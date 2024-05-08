@@ -2,7 +2,10 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="PreviewHotel">
+      <entry key="DefaultPreview">
+        <State />
+      </entry>
+      <entry key="PreviewDetailHotel">
         <State>
           <targetSelectedWithDropDown>
             <Target>
@@ -15,7 +18,23 @@
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-07T07:07:54.605152800Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-05-08T11:02:25.776736100Z" />
+        </State>
+      </entry>
+      <entry key="PreviewHotel">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\HY\.android\avd\Pixel_6_Pro_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-08T14:29:03.241421200Z" />
         </State>
       </entry>
       <entry key="app">

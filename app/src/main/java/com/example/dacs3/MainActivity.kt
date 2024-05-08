@@ -18,9 +18,11 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.dacs3.data.UI.HotelDetailItem
 import com.example.dacs3.data.UI.HotelItem
 import com.example.dacs3.data.model.Data
 import com.example.dacs3.data.model.HotelDto
+import com.example.dacs3.data.viewModel.DetailHotelViewModel
 import com.example.dacs3.data.viewModel.HotelViewModel
 import com.example.dacs3.ui.theme.DACS3Theme
 
@@ -105,6 +107,15 @@ fun HotelList(hotelList: List<Data>){
     }
 }
 
+@Composable
+fun HotelDetail(hotelDetail: List<Data>){
+    LazyColumn {
+        itemsIndexed(items = hotelDetail){ index, item ->
+            HotelDetailItem(hotel = HotelDto(listOf(item)))
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -133,6 +144,17 @@ fun PreviewHotel(hotelViewModel: HotelViewModel = HotelViewModel()) {
     }
     hotelViewModel.hotelListRes.let { hotelList ->
         HotelList(hotelList = hotelList)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewDetailHotel(detailHotelViewModel: DetailHotelViewModel = DetailHotelViewModel()) {
+    if (detailHotelViewModel.hotelDetailRes.isEmpty()) {
+        detailHotelViewModel.getHotelDetail()
+    }
+    detailHotelViewModel.hotelDetailRes.let { hotelDetail ->
+        HotelDetail(hotelDetail = hotelDetail)
     }
 }
 
