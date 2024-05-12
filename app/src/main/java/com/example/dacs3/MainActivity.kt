@@ -1,5 +1,6 @@
 package com.example.dacs3
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainNavigation()
+                    MainNavigation(context = this)
 
                 }
             }
@@ -45,12 +46,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainNavigation() {
+fun MainNavigation(context: Context) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "home") {
         composable("home") { HomeScreen(navController) }
-        composable("signup") { SignupScreen(navController) }
+        composable("signup") { SignupScreen(navController,context) }
         composable("login") { LoginScreen(navController) }
     }
 }
@@ -73,14 +74,14 @@ fun HomeScreen(navController: NavController){
 
 
 @Composable
-fun SignupScreen(navController: NavController){
+fun SignupScreen(navController: NavController,context: Context){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center
     )
     {
-        SignupContent()
+        SignupContent(navController,context)
         Ahave(navController)
     }
 }
@@ -124,11 +125,11 @@ fun DefaultPreview() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewSignupScreen() {
-    SignupScreen(rememberNavController())
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewSignupScreen() {
+//    SignupScreen(rememberNavController())
+//}
 
 @Preview(showBackground = true)
 @Composable
